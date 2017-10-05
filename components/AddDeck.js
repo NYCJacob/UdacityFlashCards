@@ -36,12 +36,16 @@ class CreateDeck extends Component {
 
         if(this.state.deckTitle !== '') {
             this.setState({ loading: true });
-            this.props.dispatch( addNewDeck(this.state.deckTitle) );
+            this.props.dispatch( addNewDeck({ deckTitle: this.state.deckTitle }) );
             saveNewDeck( this.state.deckTitle );
             this.setState( { loading: false} );
         } else {
             console.log("Empty deck title");
         }
+        this.setState(() => ({
+            deckTitle: ''
+        }))
+
     }
 
     render() {
@@ -118,6 +122,11 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    submitBtnText: {
+        color: white,
+        fontSize: 22,
+        textAlign: 'center'
     },
     err: {
         color: '#F00',
