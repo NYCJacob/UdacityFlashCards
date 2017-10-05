@@ -33,7 +33,7 @@ class CreateDeck extends Component {
     }
 
     submit = () => {
-        console.log(entry);
+
         if(this.state.deckTitle !== '') {
             this.setState({ loading: true });
             this.props.dispatch( addNewDeck(this.state.deckTitle) );
@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     inputStyle: {
-        // width: 400,
         flex : 1,
         alignSelf: 'stretch',
         height: 80,
@@ -116,7 +115,7 @@ const styles = StyleSheet.create({
         height: 45,
         marginLeft: 30,
         marginRight: 30,
-        alignSelf: 'flex-end',
+        alignSelf: 'stretch',
         justifyContent: 'center',
         alignItems: 'center'
     },
