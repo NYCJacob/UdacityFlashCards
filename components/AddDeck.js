@@ -36,7 +36,8 @@ class CreateDeck extends Component {
 
         if(this.state.deckTitle !== '') {
             this.setState({ loading: true });
-            this.props.dispatch( addNewDeck({ deckTitle: this.state.deckTitle }) );
+            // this.props.dispatch( addNewDeck({ deckTitle: this.state.deckTitle }) );
+            this.props.dispatch( addNewDeck({ [this.state.deckTitle] : {title : this.state.deckTitle, questions : []} }) );
             saveNewDeck( this.state.deckTitle );
             this.setState( { loading: false} );
         } else {
