@@ -27,8 +27,12 @@ class ListDecks extends Component {
 
     render() {
         const { decks } = this.props;
-        console.log( decks );
-        // console.log("Object Keys: ", Object.keys(decks) );
+        const decksCount = Object.keys(decks).length;
+        const decksObj = Object.keys(decks).map((key) => {
+                return decks[key];
+            });
+
+        console.log( decks, decksObj );
         return (
             <View style={styles.container}>
                 <Text>ListDecks Component</Text>
@@ -37,17 +41,12 @@ class ListDecks extends Component {
                         {/*clear data*/}
                     {/*</Text>*/}
                 {/*</TouchableOpacity>*/}
-                {decks.length > 0
+                { decksCount > 0
                     ?
-                    <FlatList
-                        data={ decks }
-                        renderItem={({item}) =>
-                           <TouchableHighlight>
-                               {item.key}
-                           </TouchableHighlight>
-
-                        }
-                    /> : (
+                  <View style={styles.noDecks}>
+                      <Text styles={styles.textStyle}>Decks List</Text>
+                  </View>
+                    : (
                         <View style={styles.noDecks}>
                             <MaterialCommunityIcons name='information-outline' size={100} color='#1485ff' />
                             <Text style={styles.textStyle}>No Deck Available. Add a new Deck!</Text>
