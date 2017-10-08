@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, TouchableHighlight, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import { MaterialCommunityIcons, EvilIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
-import  {List, ListItem, Button } from 'react-native-elements';
+import DeckListItem from './DeckListItem'
 import { fetchDecks, multiRemove} from "../utils/api";
 import TextButton  from "./TextButton"
 import { receiveDecks } from "../actions/index";
@@ -52,24 +52,10 @@ class ListDecks extends Component {
                     <FlatList
                         data={decksObj}
                         renderItem={({item, index}) =>
-                            <ListItem
-                                roundAvatar
+                            <DeckListItem
+                                navigation={this.props.navigation}
                                 title={item.title}
-                                subtitle={
-                                    <View>
-                                        <Text>{`${item.questions.length} questions`}</Text>
-                                        <TouchableOpacity style={styles.button}
-                                                          onPress={() =>
-                                                              this.props.navigation.navigate(
-                                                              'AddQuizItem',
-                                                              {title: "Add Quiz Item"}
-                                                          )}>
-                                            <TextButton>Add Questions</TextButton>
-                                        </TouchableOpacity>
-
-                                    </View>
-                                }
-
+                                cardNumber={item.questions.length}
                             />
                         }
                         keyExtractor={(item, index) => index}

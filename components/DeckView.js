@@ -40,11 +40,7 @@ class DeckView extends Component {
                         <Text style={{ fontSize: 20 }}>Add Card</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity
-                        onPress={this.startQuiz.bind(this)}
-                        style={styles.startQuizButton}>
-                        <Text style={{ fontSize: 20, color: '#FFF' }}>Start Quiz</Text>
-                    </TouchableOpacity>
+
                 </View>
 
             </View>

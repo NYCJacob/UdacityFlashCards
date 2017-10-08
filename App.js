@@ -14,7 +14,7 @@ import reducer from './reducers';
 import ReduxThunk from 'redux-thunk';
 
 import  { FontAwesome, Ionicons } from '@expo/vector-icons'
-import AddDeck from './components/AddDeck'
+import CreateDeck from './components/AddDeck'
 import DeckView from './components/DeckView'
 import ListDecks from './components/ListDecks'
 import AddQuizItem from "./components/AddQuizItem";
@@ -29,7 +29,7 @@ export default class App extends React.Component {
               }
           },
           NewDeck: {
-              screen: AddDeck,
+              screen: CreateDeck,
               navigationOptions: {
                   tabBarLabel: 'New Deck'
               }
