@@ -15,7 +15,9 @@ import ReduxThunk from 'redux-thunk';
 
 import  { FontAwesome, Ionicons } from '@expo/vector-icons'
 import AddDeck from './components/AddDeck'
+import DeckView from './components/DeckView'
 import ListDecks from './components/ListDecks'
+import AddQuizItem from "./components/AddQuizItem";
 
 export default class App extends React.Component {
   render() {
@@ -33,16 +35,33 @@ export default class App extends React.Component {
               }
           }
       });
+
       const navOptions = {
           headerTintColor: '#FFF',
           headerStyle: {
               backgroundColor: '#1485ff'
           }
       }
+
+      const App = StackNavigator({
+          Home: {
+              screen: Tabs,
+              navigationOptions: { ...navOptions, title: 'FlashCards' }
+          },
+          DeckView: {
+              screen: DeckView,
+              navigationOptions: navOptions
+          },
+          AddQuizItem: {
+              screen: AddQuizItem,
+              navigationOptions: { ...navOptions, title: 'Add Quiz Item' }
+          }
+      })
+
     return (
         <Provider store={createStore(reducer, applyMiddleware(ReduxThunk))}>
             <View style={{flex: 1}}>
-                <Tabs/>
+                <App/>
             </View>
         </Provider>
     );
