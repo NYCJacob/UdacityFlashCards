@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View, StyleSheet, TouchableOpacity, Animated } from 'react-native';
+import { styles} from "../utils/styles"
 
 class Exam extends Component {
     state = {
@@ -13,14 +14,13 @@ class Exam extends Component {
 
     render() {
         const {
-            buttonText,
+            examButtonText,
             container,
             counterText,
             mainFontStyle,
             mainView,
             correctButton,
             incorrectButton,
-            backToViewButton,
             scoreHeading,
             score
         } = styles;
@@ -51,7 +51,7 @@ class Exam extends Component {
                                 }
                                 style={correctButton}
                             >
-                                <Text style={[buttonText, {backgroundColor: 'white', color: 'black'}]}>
+                                <Text style={[examButtonText, {backgroundColor: 'white', color: 'black'}]}>
                                     { `The answer is: ${this.props.deck.questions[this.state.currentQuestion -1].answer}.`}
                                 </Text>
                             </TouchableOpacity>
@@ -64,7 +64,7 @@ class Exam extends Component {
                                 }
                                 style={correctButton}
                             >
-                                    <Text style={buttonText}>Show Answer</Text>
+                                    <Text style={examButtonText}>Show Answer</Text>
                             </TouchableOpacity>
                         }
 
@@ -78,7 +78,7 @@ class Exam extends Component {
                                 }))
                             }
                             style={correctButton}>
-                            <Text style={buttonText}>Corrent</Text>
+                            <Text style={examButtonText}>Corrent</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity
@@ -89,7 +89,7 @@ class Exam extends Component {
                                 })
                             )}
                             style={incorrectButton}>
-                            <Text style={buttonText}>Incorrect</Text>
+                            <Text style={examButtonText}>Incorrect</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -111,13 +111,13 @@ class Exam extends Component {
                             });
                         }}
                         style={correctButton}>
-                        <Text style={buttonText}>Retake Test</Text>
+                        <Text style={examButtonText}>Retake Test</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
                         onPress={() => this.props.navigation.goBack()}
-                        style={backToViewButton}>
-                        <Text>View Deck</Text>
+                        style={correctButton}>
+                        <Text style={examButtonText}>View Deck</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -126,77 +126,6 @@ class Exam extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    counterText: {
-        fontSize: 20
-    },
-    mainView: {
-        flex: 1,
-        marginTop: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 10
-    },
-    mainFontStyle: {
-        fontSize: 35,
-        textAlign: 'center'
-    },
-    toggleButtonText: {
-        fontSize: 20,
-        color: '#F00'
-    },
-    toggleButton: {
-        marginTop: 20
-    },
-    correctButton: {
-        padding: 20,
-        borderRadius: 5,
-        backgroundColor: '#00B300',
-        marginTop: 20,
-        width: 200,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    incorrectButton: {
-        padding: 20,
-        borderRadius: 5,
-        backgroundColor: '#F00',
-        marginTop: 10,
-        width: 200,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    backToViewButton: {
-        padding: 20,
-        borderRadius: 5,
-        borderColor: '#00B300',
-        borderWidth: 1,
-        marginTop: 20,
-        width: 200,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    buttonText: {
-        color: '#FFF',
-        fontSize: 20
-    },
-    scoreHeading: {
-        fontSize: 30
-    },
-    score: {
-        fontSize: 50,
-        color: '#FFF'
-    },
-    buttonContainer: {
-        marginTop: 20,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-});
 
 function mapStateToProps(state, { navigation }) {
     const { title } = navigation.state.params;

@@ -13,8 +13,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { addNewDeck } from "../actions/index"
 import { saveNewDeck } from "../utils/api"
-import { white, purple } from '../utils/colors';
-
+import { styles} from "../utils/styles"
 
 function SubmitBtn ({ onPress }) {
     return (
@@ -55,7 +54,7 @@ class CreateDeck extends Component {
         return (
             <KeyboardAvoidingView
                 behavior='padding'
-                style={styles.containerStyle}>
+                style={styles.addDeck}>
                 <MaterialCommunityIcons name='cards' size={100} color='#1485ff' />
                 <Text style={styles.headingText}>What is the title of your new deck?</Text>
 
@@ -73,68 +72,7 @@ class CreateDeck extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    containerStyle: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 10,
-    },
-    headingText: {
-        fontSize: 30,
-        alignItems: 'center',
-        textAlign: 'center'
-    },
-    inputStyle: {
-        flex : 1,
-        alignSelf: 'stretch',
-        height: 80,
-        fontSize: 20,
-        alignItems: 'center'
-    },
-    buttonStyle: {
-        padding: 10,
-        width: 100,
-        backgroundColor: '#1485ff',
-        borderWidth: 1,
-        borderColor: '#1485ff',
-        marginTop: 5,
-        borderRadius: 3
-    },
-    buttonText: {
-        color: '#FFF',
-        fontSize: 20,
-        textAlign: 'center'
-    },
-    iosSubmitBtn: {
-        backgroundColor: purple,
-        padding: 10,
-        borderRadius: 7,
-        height: 45,
-        marginLeft: 40,
-        marginRight: 40
-    },
-    androidSubmitBtn: {
-        backgroundColor: purple,
-        padding: 10,
-        borderRadius: 2,
-        height: 45,
-        marginLeft: 30,
-        marginRight: 30,
-        alignSelf: 'stretch',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    submitBtnText: {
-        color: white,
-        fontSize: 22,
-        textAlign: 'center'
-    },
-    err: {
-        color: '#F00',
-        fontSize: 20
-    }
-});
+
 
 function mapStateToProps(state) {
     return {

@@ -6,6 +6,7 @@ import DeckListItem from './DeckListItem'
 import { fetchDecks, multiRemove} from "../utils/api";
 import TextButton  from "./TextButton"
 import { receiveDecks } from "../actions/index";
+import {styles} from "../utils/styles"
 
 
 function listSubHeader(numQuestions) {
@@ -68,24 +69,6 @@ class ListDecks extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 10
-    },
-    textStyle: {
-        fontSize: 30,
-        textAlign: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 100
-    },
-    noDecks: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-});
 
 function mapStateToProps( state ) {
     return {

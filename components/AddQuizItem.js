@@ -12,6 +12,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { submitEntry} from "../utils/api"
 import { addEntry } from "../actions/index"
+import { styles} from "../utils/styles"
 
 class AddQuizItem extends Component {
     componentDidUpdate(){
@@ -59,11 +60,11 @@ class AddQuizItem extends Component {
     render() {
 
         return (
-            <KeyboardAvoidingView behavior='padding' style={styles.container}>
+            <KeyboardAvoidingView behavior='padding' style={styles.AddQuiz}>
                 <MaterialCommunityIcons name='cards' size={200} color='#1485ff' />
 
                 <TextInput
-                    style={styles.inputStyle}
+                    style={styles.addCardInput}
                     placeholder='Enter Question'
                     onChangeText={text => this.setState({ question: text })}
                     value={this.state.question}
@@ -82,7 +83,7 @@ class AddQuizItem extends Component {
                 }
 
                 <TextInput
-                    style={styles.inputStyle}
+                    style={styles.addCardInput}
                     placeholder='Enter Answer'
                     multiline={true}
                     onChangeText={text => this.setState({ answer: text })}
@@ -91,7 +92,7 @@ class AddQuizItem extends Component {
                 { this.state.answerErr !== ''
                     ?
                     <Text
-                        style={styles.err}>
+                        style={styles.addCarderr}>
                         <MaterialCommunityIcons
                             name='close-circle-outline'
                             size={20} color='#F00'
@@ -106,7 +107,7 @@ class AddQuizItem extends Component {
                     :
                     <TouchableOpacity
                         onPress={this.submit}
-                        style={styles.addCardButton}>
+                        style={styles.addQuizItemButton}>
                         <Text style={{ fontSize: 20, color: '#FFF' }}>Submit Card</Text>
                     </TouchableOpacity>}
             </KeyboardAvoidingView>
@@ -114,33 +115,6 @@ class AddQuizItem extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    inputStyle: {
-        flex: 1,
-        justifyContent: 'center',
-        alignSelf: 'stretch',
-        fontSize: 30
-    },
-    addCardButton: {
-        backgroundColor: '#1485ff',
-        borderWidth: 1,
-        borderColor: '#FFF',
-        borderRadius: 5,
-        padding: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 30
-    },
-    err: {
-        color: '#F00',
-        fontSize: 20
-    }
-})
 
 function mapStateToProps(state) {
     return state

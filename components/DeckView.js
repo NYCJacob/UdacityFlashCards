@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
+import { styles} from "../utils/styles"
 
 
 class DeckView extends Component {
@@ -26,7 +27,7 @@ class DeckView extends Component {
 
         return (
             <View style={{flex: 1}}>
-                <View style={styles.container}>
+                <View style={styles.deckView}>
                     <MaterialCommunityIcons name='cards' size={300} color='#1485ff' />
                     <Text style={styles.headerText}>{deck.title}</Text>
                     <Text style={styles.detailText}>{deck.questions ? `${deck.questions.length} Question(s)` : '0 Questions'}</Text>
@@ -58,44 +59,7 @@ class DeckView extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 100
-    },
-    headerText: {
-        fontSize: 50,
-    },
-    detailText: {
-        fontSize: 35,
-        color: '#BBB'
-    },
-    addCardButton: {
-        flex : 1,
-        borderWidth: 1,
-        borderColor: '#1485ff',
-        borderRadius: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 50,
-        padding : 20,
-        minWidth: 200
-    },
-    startQuizButton: {
-        flex: 1,
-        backgroundColor: '#1485ff',
-        borderWidth: 1,
-        borderColor: '#FFF',
-        borderRadius: 5,
-        padding: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 20,
-        minWidth: 200
-    }
-});
+
 
 function mapStateToProps(state, { navigation }) {
     const { title } = navigation.state.params;
