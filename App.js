@@ -19,6 +19,17 @@ import DeckView from './components/DeckView'
 import ListDecks from './components/ListDecks'
 import AddQuizItem from "./components/AddQuizItem";
 import Exam from './components/Exam'
+import { purple, blue} from "./utils/colors"
+
+
+// custom status bar
+function FlashCardStatusBar ({ backgroundColor, ...props }) {
+    return (
+        <View style={{backgroundColor, height: Constants.statusBarHeight}}>
+            <StatusBar translucent backgroundColor={backgroundColor} {...props}/>
+        </View>
+    )
+}
 
 export default class App extends React.Component {
   render() {
@@ -66,6 +77,7 @@ export default class App extends React.Component {
     return (
         <Provider store={createStore(reducer, applyMiddleware(ReduxThunk))}>
             <View style={{flex: 1}}>
+                <FlashCardStatusBar backgroundColor={purple} barStyle='light-content'/>
                 <App/>
             </View>
         </Provider>

@@ -42,8 +42,6 @@ class ListDecks extends Component {
 
         return (
             <View style={styles.container}>
-                <Text>ListDecks Component</Text>
-
                 { decksCount > 0
                     ?
                     <FlatList

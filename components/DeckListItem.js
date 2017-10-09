@@ -9,8 +9,6 @@ export default class DeckListItem extends Component {
     }
 
 
-
-
     render() {
         const { bounceValue } = this.state;
         return (

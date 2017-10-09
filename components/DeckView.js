@@ -41,14 +41,16 @@ class DeckView extends Component {
                         <Text style={{ fontSize: 20 }}>Add Questions</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate(
-                            'Exam',
-                            {title: deck.title}
-                        )}
-                        style={styles.startQuizButton}>
-                        <Text style={{ fontSize: 20, color: '#FFF' }}>Start Quiz</Text>
-                    </TouchableOpacity>
+                    { deck.questions.length > 0 &&
+                        <TouchableOpacity
+                            onPress={() => this.props.navigation.navigate(
+                                'Exam',
+                                {title: deck.title}
+                            )}
+                            style={styles.startQuizButton}>
+                            <Text style={{ fontSize: 20, color: '#FFF' }}>Start Quiz</Text>
+                        </TouchableOpacity>
+                    }
 
 
 

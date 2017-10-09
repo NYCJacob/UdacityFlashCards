@@ -34,11 +34,11 @@ let DeckListItemStyles = {
         borderRadius: Platform.OS === 'ios' ? 16 : 2,
         marginBottom: 20,
         shadowRadius: 6,
-        shadowOpacity: 1,
+        shadowOpacity: .5,
         shadowColor: 'rgba(0,0,0,24)',
         shadowOffset: {
-            width: 0,
-            height: 3
+            width: 1,
+            height: 5
         }
     },
     titleStyle: {
@@ -242,11 +242,19 @@ let examStyles = {
     }
 }
 
+let textButtonStyles = {
+    reset: {
+        textAlign: 'center',
+        color: purple
+    }
+}
+
 export const styles = StyleSheet.create({
     ...ListDecksStyles,
     ...DeckListItemStyles,
     ...DeckViewStyles,
     ...AddDeck,
     ...addQuizItem,
-    ...examStyles
+    ...examStyles,
+    ...textButtonStyles
 });
