@@ -31,9 +31,6 @@ class ListDecks extends Component {
             })))
     }
 
-    // clearData = (keyArray) => {
-    //     multiRemove(keyArray)
-    // }
 
     render() {
         const { decks } = this.props;
@@ -42,7 +39,6 @@ class ListDecks extends Component {
                 return decks[key];
             });
 
-        console.log( this.props );
         return (
             <View style={styles.container}>
                 <Text>ListDecks Component</Text>

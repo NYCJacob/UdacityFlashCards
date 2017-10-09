@@ -28,6 +28,7 @@ class AddQuizItem extends Component {
 
     submit = () => {
         // TODO: make sure no duplicate titles because will be key in deck object
+
         const { question, answer } = this.state;
         const { title } = this.props.navigation.state.params;
 
@@ -35,9 +36,7 @@ class AddQuizItem extends Component {
             this.setState({ questionErr: '', answerErr: '', loading: true });
 
             // update redux store
-            this.props.dispatch(addEntry({
-                [title]: {question : answer}
-            }));
+            this.props.dispatch(addEntry({  title : title, question: question, answer: answer } ));
 
             // update local storage via api
             submitEntry(title, {question, answer});

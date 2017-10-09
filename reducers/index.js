@@ -15,9 +15,13 @@ function decks (state = {}, action) {
             }
 
         case ADD_ENTRY :
+            let quizItem = { question: action.question, answer: action.answer}
+            // state[action.title].questions.push(quizItem);
+            let targetDeck = state[action.title];
+            targetDeck.questions.push(quizItem);
             return {
                 ...state,
-                ...action.newQuizItem
+                targetDeck
             }
 
         default :

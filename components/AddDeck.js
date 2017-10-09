@@ -44,6 +44,10 @@ class CreateDeck extends Component {
         this.setState(() => ({
             deckTitle: ''
         }))
+
+        this.props.navigation.navigate(
+            'Home'
+        )
     }
 
     render() {

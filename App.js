@@ -18,6 +18,7 @@ import CreateDeck from './components/AddDeck'
 import DeckView from './components/DeckView'
 import ListDecks from './components/ListDecks'
 import AddQuizItem from "./components/AddQuizItem";
+import Exam from './components/Exam'
 
 export default class App extends React.Component {
   render() {
@@ -55,6 +56,10 @@ export default class App extends React.Component {
           AddQuizItem: {
               screen: AddQuizItem,
               navigationOptions: { ...navOptions, title: 'Add Quiz Item' }
+          },
+          Exam: {
+              screen: Exam,
+              navigationOptions: { ...navOptions, title: 'Exam' }
           }
       })
 

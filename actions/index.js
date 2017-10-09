@@ -16,9 +16,11 @@ export function receiveDecks ( decks ) {
     }
 }
 
-export function addEntry( newQuizItem ) {
+export function addEntry( newQuiz ) {
+    debugger;
     return {
         type: ADD_ENTRY,
-        newQuizItem
+        title: newQuiz.title,
+        question: newQuiz.question
     }
 }
