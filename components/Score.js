@@ -3,8 +3,8 @@ import { Text, View, StyleSheet, Animated } from 'react-native';
 import { styles } from "../utils/styles"
 
 export class Score extends Component {
-    state : {
-        opacity : new Animated.Value(0);
+    state = {
+        opacity: new Animated.Value(0)
     }
 
     componentDidMount() {
@@ -20,7 +20,7 @@ export class Score extends Component {
         const grade = Math.round(this.props.correctScore / this.props.questionQuantity) * 100;
         return (
             <Animated.View style={[styles.CenteredComplete, { opacity }]}>
-                <Text style={[styles.mainFontStyle, opacity ]}>End of Quiz</Text>
+                <Text style={ styles.mainFontStyle }>End of Quiz</Text>
                 <Text>Your score is: { grade }</Text>
 
 
