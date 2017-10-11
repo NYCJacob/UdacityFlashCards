@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { styles} from "../utils/styles"
+import { Score} from "./Score"
 
 class Exam extends Component {
     state = {
@@ -9,36 +10,23 @@ class Exam extends Component {
         currentQuestion: 1,
         correctScore: 0,
         currentlyViewing: 'Question',
-        bounceValue: new Animated.Value(1)
     }
 
     render() {
-        const {
-            examButtonText,
-            container,
-            counterText,
-            mainFontStyle,
-            mainView,
-            correctButton,
-            incorrectButton,
-            scoreHeading,
-            score
-        } = styles;
 
         const questionQuantity = this.props.deck.questions.length;
 
-        const { bounceValue } = this.state;
 
         if(this.state.currentQuestion <= questionQuantity) {
 
             return (
-                <View style={container}>
-                    <Text style={counterText}>{this.state.currentQuestion} of {questionQuantity}</Text>
+                <View style={styles.container}>
+                    <Text style={styles.counterText}>{this.state.currentQuestion} of {questionQuantity}</Text>
 
-                    <View style={mainView}>
-                        <Animated.Text style={[mainFontStyle, { transform: [{ scale: bounceValue }] }]}>
+                    <View style={styles.mainView}>
+                        <Text style={ styles.mainFontStyle }>
                             {this.props.deck.questions[this.state.currentQuestion -1].question}
-                        </Animated.Text>
+                        </Text>
 
 
                         {this.state.showAnswer
@@ -49,9 +37,9 @@ class Exam extends Component {
                                         showAnswer:false
                                     }))
                                 }
-                                style={correctButton}
+                                style={styles.correctButton}
                             >
-                                <Text style={[examButtonText, {backgroundColor: 'white', color: 'black'}]}>
+                                <Text style={[styles.examButtonText, {backgroundColor: 'white', color: 'black'}]}>
                                     { `The answer is: ${this.props.deck.questions[this.state.currentQuestion -1].answer}.`}
                                 </Text>
                             </TouchableOpacity>
@@ -62,9 +50,9 @@ class Exam extends Component {
                                         showAnswer:true
                                     }))
                                 }
-                                style={correctButton}
+                                style={styles.correctButton}
                             >
-                                    <Text style={examButtonText}>Show Answer</Text>
+                                    <Text style={styles.examButtonText}>Show Answer</Text>
                             </TouchableOpacity>
                         }
 
@@ -77,8 +65,8 @@ class Exam extends Component {
                                     showAnswer: false
                                 }))
                             }
-                            style={correctButton}>
-                            <Text style={examButtonText}>Corrent</Text>
+                            style={styles.correctButton}>
+                            <Text style={styles.examButtonText}>Corrent</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity
@@ -88,19 +76,16 @@ class Exam extends Component {
                                     showAnswer: false
                                 })
                             )}
-                            style={incorrectButton}>
-                            <Text style={examButtonText}>Incorrect</Text>
+                            style={styles.incorrectButton}>
+                            <Text style={styles.examButtonText}>Incorrect</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
             )
         } else {
             return (
-                <View style={[container, {justifyContent: 'center', alignItems: 'center'}]}>
-                    <Text style={mainFontStyle}>End of Quiz</Text>
-                    <Text>Your score is:</Text>
-                    <Text>{Math.round((this.state.correctScore / questionQuantity) * 100)}%</Text>
-                    <Text>{this.state.correctScore} out of {questionQuantity}</Text>
+                <View style={[styles.container, styles.CenteredComplete]}>
+                    <Score style={styles.CenteredComplete} questionQuantity = {questionQuantity} correctScore={ this.state.correctScore }/>
 
                     <TouchableOpacity
                         onPress={() => {
@@ -110,14 +95,14 @@ class Exam extends Component {
                                 showAnswer: false
                             });
                         }}
-                        style={correctButton}>
-                        <Text style={examButtonText}>Retake Test</Text>
+                        style={styles.correctButton}>
+                        <Text style={styles.examButtonText}>Retake Test</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
                         onPress={() => this.props.navigation.goBack()}
-                        style={correctButton}>
-                        <Text style={examButtonText}>View Deck</Text>
+                        style={styles.correctButton}>
+                        <Text style={styles.examButtonText}>View Deck</Text>
                     </TouchableOpacity>
 
                 </View>

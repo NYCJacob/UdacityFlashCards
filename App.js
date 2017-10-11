@@ -44,8 +44,10 @@ export default class App extends React.Component {
               screen: CreateDeck,
               navigationOptions: {
                   tabBarLabel: 'New Deck'
+                  //TODO:  tabBarIcon
               }
           }
+      //TODO:   tabBarOptions tint color etc....
       });
 
       const navOptions = {

@@ -4,6 +4,11 @@ import { white, purple } from '../utils/colors';
 
 //TODO: set android or iOS styles objects based on Platform response
 
+let CenteredComplete = {
+    justifyContent: 'center',
+    alignItems: 'center'
+}
+
 // ListDecks styles
 let ListDecksStyles = {
     container: {
@@ -250,6 +255,7 @@ let textButtonStyles = {
 }
 
 export const styles = StyleSheet.create({
+    CenteredComplete,
     ...ListDecksStyles,
     ...DeckListItemStyles,
     ...DeckViewStyles,
