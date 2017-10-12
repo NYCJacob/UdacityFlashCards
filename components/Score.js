@@ -11,7 +11,7 @@ export class Score extends Component {
         const {opacity} = this.state;
 
         Animated.timing(opacity, {toValue : 1, duration : 1000})
-            .start
+            .start()
     }
 
 

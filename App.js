@@ -19,6 +19,7 @@ import DeckView from './components/DeckView'
 import ListDecks from './components/ListDecks'
 import AddQuizItem from "./components/AddQuizItem";
 import Exam from './components/Exam'
+import { setLocalNotification } from "./utils/notifications"
 import { purple, blue} from "./utils/colors"
 
 
@@ -32,7 +33,11 @@ function FlashCardStatusBar ({ backgroundColor, ...props }) {
 }
 
 export default class App extends React.Component {
-  render() {
+    componentDidMount() {
+        setLocalNotification();
+    }
+
+    render() {
       const Tabs = TabNavigator({
           DeckList: {
               screen: ListDecks,

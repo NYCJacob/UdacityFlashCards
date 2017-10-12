@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Text, View, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { styles} from "../utils/styles"
 import { Score} from "./Score"
+import { clearLocalNotification, setLocalNotification} from "../utils/notifications"
 
 class Exam extends Component {
     state = {
@@ -83,6 +84,9 @@ class Exam extends Component {
                 </View>
             )
         } else {
+            clearLocalNotification()
+                .then(setLocalNotification());
+
             return (
                 <View style={[styles.container, styles.CenteredComplete]}>
                     <Score style={styles.CenteredComplete} questionQuantity = {questionQuantity} correctScore={ this.state.correctScore }/>
