@@ -29,3 +29,16 @@ export function submitEntry(title, card) {
             AsyncStorage.setItem(DB_KEY, JSON.stringify(data));
         })
 }
+
+export function deckExits( title) {
+    return AsyncStorage.getItem(DB_KEY)
+        .then( result => {
+            const decks = JSON.parse( result );
+            debugger;
+            if (decks[title] ) {
+                return true;
+            } else {
+                return false;
+            }
+        })
+    }

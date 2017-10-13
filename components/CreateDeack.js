@@ -12,7 +12,7 @@ import {
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { addNewDeck } from "../actions/index"
-import { saveNewDeck } from "../utils/api"
+import { saveNewDeck, deckExits } from "../utils/api"
 import { styles} from "../utils/styles"
 
 function SubmitBtn ({ onPress }) {
@@ -29,6 +29,19 @@ class CreateDeck extends Component {
 
     state = {
         deckTitle: ''
+    }
+
+
+    validate = () => {
+        deckExits( this.state.deckTitle )
+            .then((result) => console.log(result));
+        // if ( exists === true ){
+        //     console.log("deck exists")
+        // } else if (this.state.deckTitle === '') {
+        //     console.log("title cannot be empty");
+        // } else {
+        //     this.submit;
+        // }
     }
 
     submit = () => {
@@ -65,7 +78,7 @@ class CreateDeck extends Component {
                     value={this.state.deckTitle}
                 />
 
-                <SubmitBtn onPress={this.submit} />
+                <SubmitBtn onPress={this.validate} />
 
             </KeyboardAvoidingView>
         )
