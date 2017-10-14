@@ -35,7 +35,7 @@ class AddQuizItem extends Component {
             this.setState({ questionErr: '', answerErr: '', loading: true });
 
             // update redux store
-            this.props.dispatch(addEntry({  title : title, question: question, answer: answer } ));
+            // this.props.dispatch(addEntry({  title : title, question: question, answer: answer } ));
 
             // update local storage via api
             submitEntry(title, {question, answer});
