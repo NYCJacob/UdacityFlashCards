@@ -39,7 +39,6 @@ class ListDecks extends Component {
         const decksObj = Object.keys(decks).map((key) => {
                 return decks[key];
             });
-
         return (
             <View style={styles.container}>
                 { decksCount > 0

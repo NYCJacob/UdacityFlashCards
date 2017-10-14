@@ -19,13 +19,12 @@ export function fetchDecks() {
 }
 
 
-
-
 export function submitEntry(title, card) {
     return AsyncStorage.getItem(DB_KEY)
         .then(result => {
             const data = JSON.parse(result);
             data[title].questions.push(card);
+            debugger;
             AsyncStorage.setItem(DB_KEY, JSON.stringify(data));
         })
 }

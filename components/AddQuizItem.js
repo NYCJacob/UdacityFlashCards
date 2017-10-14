@@ -28,8 +28,6 @@ class AddQuizItem extends Component {
     }
 
     submit = () => {
-        // TODO: make sure no duplicate titles because will be key in deck object
-
         const { question, answer } = this.state;
         const { title } = this.props.navigation.state.params;
 
@@ -41,19 +39,20 @@ class AddQuizItem extends Component {
 
             // update local storage via api
             submitEntry(title, {question, answer});
+            debugger
         }
 
-        if(question === '') {
-            this.setState({ questionErr: 'Question field is required.' })
-        } else {
-            this.setState({ questionErr: '' });
-        }
-
-        if(answer === '') {
-            this.setState({ answerErr: 'Answer field is required.' })
-        } else {
-            this.setState({ answerErr: '' });
-        }
+        // if(question === '') {
+        //     this.setState({ questionErr: 'Question field is required.' })
+        // } else {
+        //     this.setState({ questionErr: '' });
+        // }
+        //
+        // if(answer === '') {
+        //     this.setState({ answerErr: 'Answer field is required.' })
+        // } else {
+        //     this.setState({ answerErr: '' });
+        // }
     }
 
 

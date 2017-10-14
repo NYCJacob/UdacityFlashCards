@@ -16,11 +16,13 @@ export function receiveDecks ( decks ) {
     }
 }
 
+// this.props.dispatch(addEntry({  title : title, question: question, answer: answer } ));
 export function addEntry( newQuiz ) {
     debugger;
     return {
         type: ADD_ENTRY,
         title: newQuiz.title,
-        question: newQuiz.question
+        question: newQuiz.question,
+        answer: newQuiz.answer
     }
 }

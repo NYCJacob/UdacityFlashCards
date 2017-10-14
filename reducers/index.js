@@ -19,9 +19,11 @@ function decks (state = {}, action) {
             // state[action.title].questions.push(quizItem);
             let targetDeck = state[action.title];
             targetDeck.questions.push(quizItem);
+            console.log(targetDeck)
+            debugger
             return {
                 ...state,
-                targetDeck
+                [action.title]: targetDeck
             }
 
         default :
