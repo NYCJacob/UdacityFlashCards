@@ -28,23 +28,27 @@ function SubmitBtn ({ onPress }) {
 class CreateDeck extends Component {
 
     state = {
-        deckTitle: ''
+        deckTitle: '',
+        titleExists : false,
+        loading : false
     }
 
 
     validate = () => {
         deckExits( this.state.deckTitle )
-            .then((result) => console.log(result));
-        // if ( exists === true ){
-        //     console.log("deck exists")
-        // } else if (this.state.deckTitle === '') {
-        //     console.log("title cannot be empty");
-        // } else {
-        //     this.submit;
-        // }
-    }
+            .then((result) => {
+                console.log(result);
+                if ( result === -1 ){
+                    this.setState( { titleExists: true })
+                } else {
+                    console.log( "else hit");
+                    this.setState( {titleExists : false, loading : true});
+                    this.submit();
+                }
+            })};
 
     submit = () => {
+        console.log("submit hit");
         if(this.state.deckTitle !== '') {
             this.setState({ loading: true });
             this.props.dispatch( addNewDeck({ [this.state.deckTitle] : {title : this.state.deckTitle, questions : []} }) );
@@ -56,7 +60,6 @@ class CreateDeck extends Component {
         this.setState(() => ({
             deckTitle: ''
         }))
-
         this.props.navigation.navigate(
             'Home'
         )
@@ -70,6 +73,17 @@ class CreateDeck extends Component {
                 style={styles.addDeck}>
                 <MaterialCommunityIcons name='cards' size={100} color='#1485ff' />
                 <Text style={styles.headingText}>What is the title of your new deck?</Text>
+
+                {this.state.titleExists &&
+                    <Text
+                        style={styles.addCarderr}>
+                        <MaterialCommunityIcons
+                            name='close-circle-outline'
+                            size={10} color='#F00'
+                        />
+                        The title already exists, please enter another title.
+                    </Text>
+                }
 
                 <TextInput
                     style={ styles.inputStyle }

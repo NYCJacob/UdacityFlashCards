@@ -34,11 +34,15 @@ export function deckExits( title) {
     return AsyncStorage.getItem(DB_KEY)
         .then( result => {
             const decks = JSON.parse( result );
-            debugger;
-            if (decks[title] ) {
-                return true;
+            if ( decks === null ) {
+                console.log("no decks")
+                return 0;
+            } else if ( decks[title] ) {
+                console.log( decks[title] + 'exists');
+                return -1
             } else {
-                return false;
+                console.log("deck name not taken")
+                return 1
             }
         })
     }
