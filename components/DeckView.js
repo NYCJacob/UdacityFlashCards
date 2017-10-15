@@ -1,6 +1,7 @@
 import React, {Component } from 'react';
 import {
     Text,
+    Button,
     StyleSheet,
     TouchableOpacity,
     View,
@@ -8,6 +9,8 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
+import { removeDeck } from "../utils/api"
+import { deleteReduxDeck} from "../actions/index"
 import { styles} from "../utils/styles"
 
 
@@ -20,6 +23,17 @@ class DeckView extends Component {
         }
     }
 
+    deleteDeck = ( key ) => {
+        console.log("delete deck");
+
+        removeDeck( key );
+        // debugger;
+        this.props.dispatch( deleteReduxDeck( key) );
+        console.log( this.props.navigation );
+        debugger;
+        this.props.navigation.goBack('Home');
+    }
+
 
     render() {
         const { deck } = this.props;
@@ -27,7 +41,15 @@ class DeckView extends Component {
         return (
             <View style={{flex: 1}}>
                 <View style={styles.deckView}>
-                    <MaterialCommunityIcons name='cards' size={300} color='#1485ff' />
+                    <Button
+                        onPress={ () => this.deleteDeck( deck.title ) }
+                        title="Delete Deck"
+                        color="#4e4cb8"
+                        accessibilityLabel="Delete the deck"
+                    />
+
+
+                    <MaterialCommunityIcons name='cards' size={100} color='#1485ff' />
                     <Text style={styles.headerText}>{deck.title}</Text>
                     <Text style={styles.detailText}>{deck.questions ? `${deck.questions.length} Question(s)` : '0 Questions'}</Text>
 

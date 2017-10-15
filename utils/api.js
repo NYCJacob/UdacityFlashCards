@@ -18,7 +18,7 @@ export function fetchDecks() {
     })
 }
 
-
+// submitEntry(title, {question, answer});
 export function submitEntry(title, card) {
     return AsyncStorage.getItem(DB_KEY)
         .then(result => {
@@ -45,3 +45,15 @@ export function deckExits( title) {
             }
         })
     }
+
+
+export function removeDeck (key) {
+    return AsyncStorage.getItem(DB_KEY)
+        .then((results) => {
+            const data = JSON.parse(results);
+            data[key] = undefined;
+            delete data[key];
+            AsyncStorage.setItem(DB_KEY, JSON.stringify(data));
+        })
+}
+

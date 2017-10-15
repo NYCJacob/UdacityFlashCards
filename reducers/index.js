@@ -1,4 +1,4 @@
-import { ADD_NEW_DECK, RECEIVE_DECKS, ADD_ENTRY} from "../actions/index"
+import { ADD_NEW_DECK, DELETE_DECK, RECEIVE_DECKS, ADD_ENTRY} from "../actions/index"
 
 
 function decks (state = {}, action) {
@@ -14,13 +14,18 @@ function decks (state = {}, action) {
                 ...action.newDeck
             }
 
+        case DELETE_DECK:
+            let newState = state;
+            delete newState[action.key]   // ES6 feature
+            // debugger;
+            return {
+                ...newState
+            }
+
         case ADD_ENTRY :
             let quizItem = { question: action.question, answer: action.answer}
-            // state[action.title].questions.push(quizItem);
             let targetDeck = state[action.title];
             targetDeck.questions.push(quizItem);
-            console.log(targetDeck)
-            debugger
             return {
                 ...state,
                 [action.title]: targetDeck

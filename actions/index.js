@@ -1,11 +1,20 @@
 export const ADD_NEW_DECK = "ADD_NEW_DECK"
 export const RECEIVE_DECKS = "RECEIVE_DECKS"
 export const ADD_ENTRY = "ADD_ENTRY"
+export const DELETE_DECK = "DELETE_DECK"
 
 export function addNewDeck ( newDeck) {
     return {
         type: ADD_NEW_DECK,
         newDeck
+    }
+}
+
+export function deleteReduxDeck( key){
+    debugger
+    return {
+        type: DELETE_DECK,
+        key
     }
 }
 
@@ -16,7 +25,6 @@ export function receiveDecks ( decks ) {
     }
 }
 
-// this.props.dispatch(addEntry({  title : title, question: question, answer: answer } ));
 export function addEntry( newQuiz ) {
     debugger;
     return {
@@ -26,3 +34,4 @@ export function addEntry( newQuiz ) {
         answer: newQuiz.answer
     }
 }
+
