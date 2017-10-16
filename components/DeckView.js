@@ -73,8 +73,6 @@ class DeckView extends Component {
                         </TouchableOpacity>
                     }
 
-
-
                 </View>
 
             </View>

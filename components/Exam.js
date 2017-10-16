@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { styles} from "../utils/styles"
+import { MaterialCommunityIcons  } from '@expo/vector-icons';
+import { white} from "../utils/colors"
 import { Score} from "./Score"
 import { clearLocalNotification, setLocalNotification} from "../utils/notifications"
 
@@ -101,6 +103,12 @@ class Exam extends Component {
                         }}
                         style={styles.correctButton}>
                         <Text style={styles.examButtonText}>Retake Test</Text>
+                        <MaterialCommunityIcons
+                            name='redo'
+                            color={white}
+                            size={35}
+                        />
+
                     </TouchableOpacity>
 
                     <TouchableOpacity

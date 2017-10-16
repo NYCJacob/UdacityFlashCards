@@ -7,6 +7,9 @@ import { fetchDecks, multiRemove} from "../utils/api";
 import TextButton  from "./TextButton"
 import { receiveDecks } from "../actions/index";
 import {styles} from "../utils/styles"
+import { AppLoading } from 'expo';
+
+// TODO: app loading from expo
 
 
 function listSubHeader(numQuestions) {
@@ -39,6 +42,12 @@ class ListDecks extends Component {
         const decksObj = Object.keys(decks).map((key) => {
                 return decks[key];
             });
+        const { ready } = this.state;
+
+        if (!ready) {
+            return <AppLoading />
+        }
+        
         return (
             <View style={styles.container}>
                 { decksCount > 0
