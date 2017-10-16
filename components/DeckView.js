@@ -1,4 +1,5 @@
 import React, {Component } from 'react';
+import * as _ from "lodash";
 import {
     Text,
     Button,
@@ -85,9 +86,8 @@ class DeckView extends Component {
 
 function mapStateToProps(state, { navigation }) {
     const { title } = navigation.state.params;
-
     return {
-        deck: state[title]
+        deck: _.cloneDeep( state[title] )
     }
 }
 

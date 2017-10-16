@@ -40,6 +40,7 @@ class AddQuizItem extends Component {
             // update local storage via api
             submitEntry(title, {question, answer});
 
+            this.props.navigation.goBack();
         }
 
         if(question === '') {
