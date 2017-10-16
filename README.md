@@ -14,8 +14,7 @@ This is is my submission for Udacity's React NanoDegree programm React Native co
 
 **Issues** 
 - Delete deck throws error as app tries to render deleted deck
-- App hangs on submission of quiz item
-- Both of the above work, ie deck is deleted and quiz item is added, when app refreshed.
+
 
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).

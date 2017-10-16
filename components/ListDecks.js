@@ -3,8 +3,7 @@ import { Text, View, TouchableHighlight, TouchableOpacity, StyleSheet, FlatList 
 import { MaterialCommunityIcons, EvilIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import DeckListItem from './DeckListItem'
-import { fetchDecks, multiRemove} from "../utils/api";
-import TextButton  from "./TextButton"
+import { fetchDecks } from "../utils/api";
 import { receiveDecks } from "../actions/index";
 import {styles} from "../utils/styles"
 import { AppLoading } from 'expo';
@@ -47,7 +46,7 @@ class ListDecks extends Component {
         if (!ready) {
             return <AppLoading />
         }
-        
+
         return (
             <View style={styles.container}>
                 { decksCount > 0

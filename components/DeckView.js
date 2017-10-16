@@ -5,8 +5,7 @@ import {
     Button,
     StyleSheet,
     TouchableOpacity,
-    View,
-    Alert
+    View
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
@@ -19,7 +18,8 @@ class DeckView extends Component {
     static navigationOptions = ({ navigation }) => {
         const { title } = navigation.state.params;
 
-        return { title
+        return {
+            title
         }
     }
 
@@ -30,10 +30,8 @@ class DeckView extends Component {
         this.props.dispatch( deleteReduxDeck( key) );
         // go to  home tabs route
         debugger;
-        this.props.navigation.goBack('DeckList');
-        debugger
+        this.props.navigation.goBack();
     }
-
 
     render() {
         const { deck } = this.props;

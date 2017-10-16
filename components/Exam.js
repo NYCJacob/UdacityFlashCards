@@ -4,7 +4,7 @@ import { Text, View, StyleSheet, TouchableOpacity, Animated } from 'react-native
 import { styles} from "../utils/styles"
 import { MaterialCommunityIcons  } from '@expo/vector-icons';
 import { white} from "../utils/colors"
-import { Score} from "./Score"
+import { Score } from "./Score"
 import { clearLocalNotification, setLocalNotification} from "../utils/notifications"
 
 class Exam extends Component {
