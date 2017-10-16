@@ -42,17 +42,18 @@ class AddQuizItem extends Component {
 
         }
 
-        // if(question === '') {
-        //     this.setState({ questionErr: 'Question field is required.' })
-        // } else {
-        //     this.setState({ questionErr: '' });
-        // }
-        //
-        // if(answer === '') {
-        //     this.setState({ answerErr: 'Answer field is required.' })
-        // } else {
-        //     this.setState({ answerErr: '' });
-        // }
+        if(question === '') {
+            this.setState({ questionErr: 'Question field is required.' })
+        } else {
+            this.setState({ questionErr: '' });
+        }
+
+        if(answer === '') {
+            this.setState({ answerErr: 'Answer field is required.' })
+        } else {
+            this.setState({ answerErr: '' });
+        }
+        debugger
     }
 
 

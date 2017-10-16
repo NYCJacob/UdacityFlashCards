@@ -18,20 +18,19 @@ class DeckView extends Component {
     static navigationOptions = ({ navigation }) => {
         const { title } = navigation.state.params;
 
-        return {
-            title
+        return { title
         }
     }
 
     deleteDeck = ( key ) => {
-        console.log("delete deck");
-
+        // remove deck from localStorage
         removeDeck( key );
-        // debugger;
+        //remove deck from Redux
         this.props.dispatch( deleteReduxDeck( key) );
-        console.log( this.props.navigation );
+        // go to  home tabs route
         debugger;
-        this.props.navigation.goBack('Home');
+        this.props.navigation.goBack('DeckList');
+        debugger
     }
 
 

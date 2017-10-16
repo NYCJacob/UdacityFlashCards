@@ -7,6 +7,7 @@ import {
     StatusBar
 } from 'react-native';
 import { Constants } from 'expo';
+import { MaterialIcons  } from '@expo/vector-icons';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -20,7 +21,7 @@ import ListDecks from './components/ListDecks'
 import AddQuizItem from "./components/AddQuizItem";
 import Exam from './components/Exam'
 import { setLocalNotification } from "./utils/notifications"
-import { purple, blue} from "./utils/colors"
+import { purple, blue, white} from "./utils/colors"
 
 
 // custom status bar
@@ -42,18 +43,17 @@ export default class App extends React.Component {
           DeckList: {
               screen: ListDecks,
               navigationOptions: {
-                  tabBarLabel: 'Deck List'
+                  tabBarLabel: 'Deck List',
               }
           },
           NewDeck: {
               screen: CreateDeck,
               navigationOptions: {
-                  tabBarLabel: 'New Deck'
-                  //TODO:  tabBarIcon
+                  tabBarLabel: 'New Deck',
               }
           }
-      //TODO:   tabBarOptions tint color etc....
-      });
+      }
+      );
 
       const navOptions = {
           headerTintColor: '#FFF',
