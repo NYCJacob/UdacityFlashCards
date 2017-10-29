@@ -17,7 +17,6 @@ function decks (state = {}, action) {
         case DELETE_DECK:
             let newState = state;
             delete newState[action.key]   // ES6 feature
-            // debugger;
             return {
                 ...newState
             }

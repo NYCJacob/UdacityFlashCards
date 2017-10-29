@@ -11,7 +11,6 @@ export function addNewDeck ( newDeck) {
 }
 
 export function deleteReduxDeck( key){
-    debugger
     return {
         type: DELETE_DECK,
         key
@@ -26,7 +25,6 @@ export function receiveDecks ( decks ) {
 }
 
 export function addEntry( newQuiz ) {
-    debugger;
     return {
         type: ADD_ENTRY,
         title: newQuiz.title,

@@ -23,8 +23,6 @@ export function submitEntry(title, card) {
     return AsyncStorage.getItem(DB_KEY)
         .then(result => {
             const data = JSON.parse(result);
-            debugger;
-
             data[title].questions.push(card);
             AsyncStorage.setItem(DB_KEY, JSON.stringify(data));
         })
@@ -35,13 +33,10 @@ export function deckExits( title) {
         .then( result => {
             const decks = JSON.parse( result );
             if ( decks === null ) {
-                console.log("no decks")
                 return 0;
             } else if ( decks[title] ) {
-                console.log( decks[title] + 'exists');
                 return -1
             } else {
-                console.log("deck name not taken")
                 return 1
             }
         })

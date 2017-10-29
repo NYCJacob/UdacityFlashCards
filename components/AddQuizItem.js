@@ -54,7 +54,7 @@ class AddQuizItem extends Component {
         } else {
             this.setState({ answerErr: '' });
         }
-        debugger
+
     }
 
 

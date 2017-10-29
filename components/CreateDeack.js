@@ -41,7 +41,6 @@ class CreateDeck extends Component {
                 if ( result === -1 ){
                     this.setState( { titleExists: true })
                 } else {
-                    console.log( "else hit");
                     this.setState( {titleExists : false, loading : true});
                     this.submit();
                 }

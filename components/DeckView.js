@@ -23,14 +23,16 @@ class DeckView extends Component {
         }
     }
 
+    // because deleteDeck uses Redux need to prevent render if deleted
+    shouldComponentUpdate(nextProps, nextState){
+        return nextProps.deck === this.props.deck
+    }
+
     deleteDeck = ( key ) => {
         // remove deck from localStorage
         removeDeck( key );
         //remove deck from Redux
         this.props.dispatch( deleteReduxDeck( key) );
-        // go to  home tabs route
-        debugger;
-        this.props.navigation.goBack();
     }
 
     render() {
